@@ -151,12 +151,12 @@ def process_command_line_arguments():
     argumentList = sys.argv[1:]
 
     options = "hv:i:o:c:"
-    long_options = ["help","verbose=", "input=", "output=", "clasification_mode="]
+    long_options = ["help","verbose=", "input=", "output=", "classification_mode="]
 
     verbose = None
     input_path = None
     output_path = None
-    clasification_mode = None
+    classification_mode = None
     try:
         arguments, values = getopt.getopt(argumentList, options, long_options)
     except getopt.error as err:
@@ -167,7 +167,7 @@ def process_command_line_arguments():
     print("Values: ", values)   
     for currentArgument, currentValue in arguments:
         if currentArgument in ("-h", "--help"):
-            print("Usage: python main.py [-h] [-v MODE] [-i INPUT] [-o OUTPUT] [-c CLASIFICATION_MODE]")
+            print("Usage: python main.py [-h] [-v MODE] [-i INPUT] [-o OUTPUT] [-c CLASSIFICATION_MODE]")
             print("Options:")
             print("  -h, --help           Show this help message and exit")
             print("  -v, --verbose        Enable verbose mode.")
@@ -176,7 +176,7 @@ def process_command_line_arguments():
             print("                       If not provided, it will be asked")
             print("  -i, --input PATH     Specify the input directory (if not provided, it will be asked)")
             print("  -o, --output PATH    Specify the destination directory (default: 'organized_folder' in input)")
-            print("  -c, --classification_mode CLASIFICATION_MODE    Specify the classification mode (default: 'None')")
+            print("  -c, --classification_mode CLASSIFICATION_MODE    Specify the classification mode (default: 'None')")
             print("                       Optional values: 1 = 'content', 2 = 'date', 3 = 'type'")
 
             sys.exit(0)
@@ -188,9 +188,9 @@ def process_command_line_arguments():
         if currentArgument in ("-o", "--output"):
             output_path = currentValue
         if currentArgument in ("-c", "--classification_mode"):
-            clasification_mode = currentValue
+            classification_mode = currentValue
 
-    return verbose, input_path, output_path, clasification_mode
+    return verbose, input_path, output_path, classification_mode
 
 
 def setup_logging(silent_mode: bool, log_file='operation_log.txt'):
